@@ -1,7 +1,13 @@
 var express = require('express');
+var config = require('./config.js');
+var createTables = require('./createTables.js');
 const router = express.Router();
 
 const app = express();
+
+if (config.updateDatabase) {
+    createTables.createTables();
+}
 
 //create here your routes
 
