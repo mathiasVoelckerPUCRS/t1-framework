@@ -1,5 +1,5 @@
 let config = {
-    updateDatabase: true
+    updateDatabase: false
 };
 
 module.exports = config;

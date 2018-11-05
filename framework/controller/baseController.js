@@ -56,7 +56,6 @@ class BaseController {
         const pathData = path.split('/');
         const tableName = pathData[0];
         const id = pathData[1];
-        const atributes = [];
         const object = req.body; 
         var response = await updateService.update(tableName, object, id);
         if (response.affectedRows == 0) {

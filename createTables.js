@@ -1,7 +1,7 @@
-var Column = require('./service/column');
-var ForeignKey = require('./service/foreignKey');
-var create = require('./service/create');
-var TypeEnum = require('./service/typeEnum');
+var Column = require('./framework/service/column');
+var ForeignKey = require('./framework/service/foreignKey');
+var create = require('./framework/service/create');
+var TypeEnum = require('./framework/service/typeEnum');
 
 module.exports = {
     async createTables() {

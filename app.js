@@ -2,7 +2,7 @@ var bodyParser = require('body-parser')
 var express = require('express');
 var config = require('./config');
 var createTables = require('./createTables');
-var BaseController = require('./controller/baseController');
+var BaseController = require('./framework/controller/baseController');
 const router = express.Router();
 
 const app = express();
