@@ -14,7 +14,7 @@ class BaseController {
             return res.send(data);
         } catch (error) { 
             return error
-          .status(httpStatus.INTERNAL_SERVER_ERROR)
+          .status(500)
           .json({ error: 'Ocorreu um erro ao buscar a lista de professores' });
       }
     }
@@ -32,7 +32,7 @@ class BaseController {
             return res.send(data);
         } catch (error) { 
             return error
-          .status(httpStatus.INTERNAL_SERVER_ERROR)
+          .status(500)
           .json({ error: 'Ocorreu um erro ao buscar a lista de professores' });
       }
     }
@@ -57,11 +57,12 @@ class BaseController {
         const tableName = pathData[0];
         const id = pathData[1];
         const atributes = [];
-        const object = req.body; 
-        for (let atribute in object) {
-            atributes.push(new Atribute(atribute, object[atribute]));
-        }
-        var response = await updateService.update(tableName, atributes, id);
+        // const object = req.body; 
+        // for (let atribute in object) {
+        //     atributes.push(new Atribute(atribute, object[atribute]));
+        // }
+        const object = { "name": "teste", "coisa": "test"}
+        var response = await updateService.update(tableName, object, id);
         if (response.affectedRows == 0) {
             return res.status(500).send({ error: `${tableName} with id ${id} not found` });
         }

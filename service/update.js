@@ -3,11 +3,17 @@ let config = require('../node-mysql/config.js');
 
 module.exports = {
 
-update(tableName, atribute, id) {
+update(tableName, object, id) {
     return new Promise(
         (resolve, reject) => {
         let connection = mysql.createConnection(config);
-        sql = `update ${tableName} set ${atribute.name} = ${atribute.value} where id = ${id}`
+        sql = `update ${tableName} set`
+        for (let atribute in object) {
+            sql += ` ${atribute} = ${object[atribute]} and`
+        }
+        sql = sql.substring(0, sql.length-3);
+        sql += `where id = ${id}`
+
         connection.query(sql, function(err, results, fields) {
             if (err) {
                 reject(err.message);
