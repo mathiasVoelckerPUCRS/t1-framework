@@ -1,3 +1,4 @@
+var bodyParser = require('body-parser')
 var express = require('express');
 var config = require('./config');
 var createTables = require('./createTables');
@@ -27,5 +28,6 @@ if (config.updateDatabase) {
 // router.put('/tableName/:id', controller.update)
 //router.delete('/tableName/:id', controller.delete)
 
+app.use(bodyParser.json());
 app.use('/api', router);
 module.exports = app;
